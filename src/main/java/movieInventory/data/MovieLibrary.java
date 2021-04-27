@@ -10,22 +10,21 @@ public class MovieLibrary {
         this.movieList = new ArrayList<>();
     }
 
-    public void addMovie(Movie movie){
-        if(this.movieList.contains(movie)){
-            return;
+    public void addMovie(Movie movie) {
+        if (this.containsID(movie.getImdbID()) == -1) {
+            this.movieList.add(movie);
         }
-        this.movieList.add(movie);
     }
 
-    public void removeMovie(String imdbID){
-        if(this.containsID(imdbID) >= 0){
+    public void removeMovie(String imdbID) {
+        if (this.containsID(imdbID) >= 0) {
             this.movieList.remove(this.containsID(imdbID));
         }
     }
 
-    private int containsID(String imdbID){
-        for(int i = 0; i < this.movieList.size(); i++){
-            if(this.movieList.get(i).getImdbID().equals(imdbID)){
+    private int containsID(String imdbID) {
+        for (int i = 0; i < this.movieList.size(); i++) {
+            if (this.movieList.get(i).getImdbID().equals(imdbID)) {
                 return i;
             }
         }
