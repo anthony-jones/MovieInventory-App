@@ -1,5 +1,5 @@
 # MovieInventory-App
-*CURRENTLY IN PROGRESS*
+**CURRENTLY IN PROGRESS**
 
 A project that can keep inventory of a home movie collection.
 
