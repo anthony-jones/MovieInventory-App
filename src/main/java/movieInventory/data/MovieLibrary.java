@@ -11,20 +11,20 @@ public class MovieLibrary {
     }
 
     public void addMovie(Movie movie) {
-        if (this.containsID(movie.getImdbID()) == -1) {
+        if (this.containsID(movie.getTmdbID()) == -1) {
             this.movieList.add(movie);
         }
     }
 
-    public void removeMovie(String imdbID) {
-        if (this.containsID(imdbID) >= 0) {
-            this.movieList.remove(this.containsID(imdbID));
+    public void removeMovie(String tmdbID) {
+        if (this.containsID(tmdbID) >= 0) {
+            this.movieList.remove(this.containsID(tmdbID));
         }
     }
 
-    private int containsID(String imdbID) {
+    private int containsID(String tmdbID) {
         for (int i = 0; i < this.movieList.size(); i++) {
-            if (this.movieList.get(i).getImdbID().equals(imdbID)) {
+            if (this.movieList.get(i).getTmdbID().equals(tmdbID)) {
                 return i;
             }
         }

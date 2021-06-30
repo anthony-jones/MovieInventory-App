@@ -1,87 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="353.0" prefWidth="650.0" scaleShape="false" xmlns="http://javafx.com/javafx/8"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="movieInventory.Controller">
-    <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0"
-          prefWidth="251.0">
-        <HBox.margin>
-            <Insets top="20.0"/>
-        </HBox.margin>
-        <ListView fx:id="movieListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                  minWidth="-Infinity" onMouseClicked="#movieSelected" prefHeight="247.0" prefWidth="251.0"/>
-        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                  minWidth="-Infinity" prefHeight="82.0" prefWidth="238.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="60.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="178.0"/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-            </rowConstraints>
-            <Button mnemonicParsing="false" onAction="#addButtonPressed" text="ADD"
-                    GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                <font>
-                    <Font name="System Bold" size="12.0"/>
-                </font>
-            </Button>
-            <TextField fx:id="addTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                       minWidth="-Infinity" prefHeight="25.0" prefWidth="167.0" GridPane.columnIndex="1"
-                       GridPane.halignment="CENTER" GridPane.rowIndex="1"/>
-        </GridPane>
-    </VBox>
-    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-          prefHeight="361.0" prefWidth="319.0">
-        <HBox.margin>
-            <Insets left="15.0"/>
-        </HBox.margin>
-        <ImageView fx:id="coverArtViewer" fitHeight="189.0" fitWidth="200.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <VBox.margin>
-                <Insets bottom="10.0" left="35.0" top="55.0"/>
-            </VBox.margin>
-        </ImageView>
-        <GridPane alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                  minWidth="-Infinity" prefHeight="115.0" prefWidth="233.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="127.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="131.0"/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="35.0" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES"/>
-            </rowConstraints>
-            <VBox.margin>
-                <Insets bottom="60.0"/>
-            </VBox.margin>
-            <Label text="Title: " GridPane.halignment="RIGHT"/>
-            <Label text="Release Year: " GridPane.halignment="RIGHT" GridPane.rowIndex="1"/>
-            <Label text="Imdb ID: " GridPane.halignment="RIGHT" GridPane.rowIndex="3"/>
-            <Label fx:id="titleValueLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER"/>
-            <Label fx:id="releaseValueLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                   GridPane.rowIndex="1"/>
-            <Label fx:id="idValueLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                   GridPane.rowIndex="3"/>
-            <Button mnemonicParsing="false" onAction="#removeButtonPressed" text="REMOVE"
-                    GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-                <font>
-                    <Font name="System Bold" size="12.0"/>
-                </font>
-            </Button>
-            <Label text="Rated: " GridPane.halignment="RIGHT" GridPane.rowIndex="2"/>
-            <Label fx:id="ratingValueLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER"
-                   GridPane.rowIndex="2"/>
-        </GridPane>
-    </VBox>
+<HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="637.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movieInventory.Controller">
+    <children>
+        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="251.0">
+            <HBox.margin>
+                <Insets top="20.0" />
+            </HBox.margin>
+            <children>
+                <ListView fx:id="movieListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#movieSelected" prefHeight="247.0" prefWidth="251.0" />
+                <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="238.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="60.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="178.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#addButtonPressed" text="ADD" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <TextField fx:id="addTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="167.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="361.0" prefWidth="300.0">
+            <HBox.margin>
+                <Insets left="15.0" />
+            </HBox.margin>
+            <children>
+                <ImageView fx:id="coverArtViewer" fitHeight="189.0" fitWidth="185.0" pickOnBounds="true" preserveRatio="true">
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="35.0" top="55.0" />
+                    </VBox.margin>
+                </ImageView>
+                <GridPane alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="258.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="79.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="179.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="20.0" minHeight="-Infinity" prefHeight="20.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="35.0" minHeight="-Infinity" prefHeight="35.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <VBox.margin>
+                        <Insets bottom="60.0" />
+                    </VBox.margin>
+                    <children>
+                        <Label text="Title: " GridPane.halignment="RIGHT" />
+                        <Label text="Release Year: " GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                        <Label text="TMDB ID: " GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                        <Label fx:id="titleValueLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Label fx:id="releaseValueLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Label fx:id="idValueLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#removeButtonPressed" text="REMOVE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Button>
+                        <Label text="Tagline: " GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                        <Label fx:id="taglineValueLabel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+    </children>
 </HBox>

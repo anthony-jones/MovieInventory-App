@@ -1,6 +1,5 @@
 package movieInventory;
 
-import com.mashape.unirest.http.exceptions.UnirestException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
@@ -10,28 +9,28 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import movieInventory.data.Movie;
 import movieInventory.data.MovieLibrary;
-import movieInventory.imdbAPI.imdbAPI;
+import movieInventory.tmdbAPI.tmdbAPI;
 
 public class Controller {
     private final MovieLibrary movieLibrary;
-    private final imdbAPI imdbApi;
+    private final tmdbAPI tmdbAPI;
     public TextField addTextField;
     public ListView<Movie> movieListView;
     public Label titleValueLabel;
     public Label releaseValueLabel;
     public Label idValueLabel;
-    public Label ratingValueLabel;
+    public Label taglineValueLabel;
     public ImageView coverArtViewer;
 
     public Controller() {
+        this.tmdbAPI = new tmdbAPI();
         this.movieLibrary = new MovieLibrary();
-        this.imdbApi = new imdbAPI();
     }
 
-    public void addButtonPressed() throws UnirestException {
+    public void addButtonPressed() {
         if (!this.addTextField.getText().isEmpty()) {
             String id = this.addTextField.getText();
-            Movie movie = this.imdbApi.retrieveMovieData(id);
+            Movie movie = this.tmdbAPI.retrieveMovieData(id);
             if (movie != null) {
                 this.movieLibrary.addMovie(movie);
                 this.updateList();
@@ -48,7 +47,7 @@ public class Controller {
         }
     }
 
-    public void movieSelected() throws UnirestException {
+    public void movieSelected() {
         Movie movie = this.movieListView.getSelectionModel().getSelectedItem();
         if (movie != null) {
             this.updateCurrentData(movie);
@@ -60,16 +59,16 @@ public class Controller {
         this.movieListView.setItems(list);
     }
 
-    private void updateCurrentData(Movie movie) throws UnirestException {
+    private void updateCurrentData(Movie movie) {
         this.titleValueLabel.setText(movie.getTitle());
         this.releaseValueLabel.setText(movie.getReleaseDate());
-        this.idValueLabel.setText(movie.getImdbID());
-        this.ratingValueLabel.setText(movie.getRated());
+        this.idValueLabel.setText(movie.getTmdbID());
+        this.taglineValueLabel.setText(movie.getTagline());
         this.updateDisplayedImage(movie);
     }
 
-    private void updateDisplayedImage(Movie movie) throws UnirestException {
-        Image image = new Image(this.imdbApi.retrieveCoverArt(movie.getImdbID()));
+    private void updateDisplayedImage(Movie movie) {
+        Image image = new Image(movie.getPosterPath());
         this.coverArtViewer.setImage(image);
     }
 
@@ -77,7 +76,7 @@ public class Controller {
         this.titleValueLabel.setText("");
         this.releaseValueLabel.setText("");
         this.idValueLabel.setText("");
-        this.ratingValueLabel.setText("");
+        this.taglineValueLabel.setText("");
         this.coverArtViewer.setImage(null);
     }
 }
